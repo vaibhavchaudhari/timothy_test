@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlServerCe;
 using System.Configuration;
-
 namespace timothy_test
 {
     class DataLayer
