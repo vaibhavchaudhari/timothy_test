@@ -129,6 +129,7 @@ namespace timothy_test
                 if (test_grid.DataSource != null)
                 {
                     test_grid.DataSource = null;
+                    test_grid.Columns.Clear();
                 }
               
 
@@ -621,9 +622,6 @@ namespace timothy_test
                 }
             }
         }
-
-     
-
         private void test_grid_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -828,7 +826,6 @@ namespace timothy_test
                         test_grid.Columns["Id"].Visible = false;
                         test_grid.DefaultCellStyle.Font = new Font("TimesNewRoman", 10);
                         test_grid.ColumnHeadersDefaultCellStyle.Font = new Font("TimesNewRoman", 10);
-
                         connection.Close();
                         test_grid.Refresh(); 
                     }
