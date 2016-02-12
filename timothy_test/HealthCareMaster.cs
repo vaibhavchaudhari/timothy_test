@@ -655,7 +655,7 @@ namespace timothy_test
                                 cmd.CommandType = CommandType.Text;
                                 cmd.CommandText = "delete from SubMenuValue where Id=" + delete_id + "";
                                 cmd.ExecuteNonQuery();
-                                test_grid.Refresh();
+                               // test_grid.Refresh();
                             }
                             Bindtest();
                         }
@@ -826,12 +826,6 @@ namespace timothy_test
                         da.Fill(dt1);
                         test_grid.DataSource = dt1;
                         test_grid.Columns["Id"].Visible = false;
-                        test_grid.Columns[0].Width = 10;
-                        test_grid.Columns[2].Width = 370;
-                        
-                       // test_grid.Columns[0].SortMode = DataGridViewColumnSortMode.NotSortable;
-                       // test_grid.Columns[2].SortMode = DataGridViewColumnSortMode.NotSortable;
-                        
                         test_grid.DefaultCellStyle.Font = new Font("TimesNewRoman", 10);
                         test_grid.ColumnHeadersDefaultCellStyle.Font = new Font("TimesNewRoman", 10);
 
