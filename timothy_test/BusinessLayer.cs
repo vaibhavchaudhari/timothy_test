@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
-
+using System.ComponentModel;
+using System.Drawing;
+using System.Windows.Forms;
 namespace timothy_test
 {
     class BusinessLayer
@@ -16,9 +18,9 @@ namespace timothy_test
         {
             return (dl.displaylist());
         }
-        public string savemenu(string key, string value, int llcnt)
+        public string savemenu(string key, string value, int llcnt,List<KeyValuePair<string, string>> data)
         {
-            return (dl.savemenu(key, value, llcnt));
+            return (dl.savemenu(key, value, llcnt, data));
         }
         public DataTable getvalue(string keys)
         {
@@ -28,7 +30,7 @@ namespace timothy_test
         {
             return (dl.delete_record(keys));
         }
-        public string updatemenu(string mainmenuekey, string[] newsubmenuekeyvalue, string descreption,int mainmenueupdateid)
+        public string updatemenu(string mainmenuekey, List<KeyValuePair<string, string>> newsubmenuekeyvalue, string descreption,int mainmenueupdateid)
         {
            return( dl.updatemenu( mainmenuekey,newsubmenuekeyvalue,descreption, mainmenueupdateid));
         }
@@ -44,13 +46,20 @@ namespace timothy_test
         {
             return (dl.del_submenu(record_id));
         }
-        public string update_submenu(string record_id)
+        public string update_submenu(string record_id, string value)
         {
-            return (dl.del_submenu(record_id));
+            return (dl.update_submenu(record_id, value));
         }
         public string save_submenu(string submenuid,string Value)
         {
             return (dl.save_submenu(submenuid,Value));
         }
+
+        public DataTable fillsubmenulist(int mainmenueupdateid)
+        {
+            return (dl.fillsubmenulist(mainmenueupdateid));
+        }
+
+       
     }
 }
