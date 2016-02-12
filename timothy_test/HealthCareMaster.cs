@@ -625,6 +625,7 @@ namespace timothy_test
                 
         private void test_grid_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
+
             if (test_grid.RowCount - 1 == test_grid.CurrentCell.RowIndex)
             {
                 return;
@@ -642,51 +643,62 @@ namespace timothy_test
                 int colindex = test_grid.CurrentCell.ColumnIndex;
                 if (colindex == 3 && test_grid.Columns[colindex].HeaderText == "Delete")
                 {
-                    using (connection = new SqlCeConnection(connectionString))
+                    DialogResult delresult = MessageBox.Show("Do You Really Want to Delete record", s, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (delresult == DialogResult.Yes)
                     {
-                        SqlCeCommand cmd = connection.CreateCommand();
+                        using (connection = new SqlCeConnection(connectionString))
                         {
-                            connection.Open();
-                            cmd.CommandType = CommandType.Text;
-                            cmd.CommandText = "delete from SubMenuValue where Id=" + delete_id + "";
-                            cmd.ExecuteNonQuery();
-                            test_grid.Refresh();
+                            SqlCeCommand cmd = connection.CreateCommand();
+                            {
+                                connection.Open();
+                                cmd.CommandType = CommandType.Text;
+                                cmd.CommandText = "delete from SubMenuValue where Id=" + delete_id + "";
+                                cmd.ExecuteNonQuery();
+                                test_grid.Refresh();
+                            }
+                            Bindtest();
                         }
-                        Bindtest();
-                    }
 
+                    }
                 }
 
                 else if (colindex == 1 && test_grid.Columns[colindex].HeaderText == "Delete")
                 {
-
-
-                    using (connection = new SqlCeConnection(connectionString))
+                    DialogResult delresult = MessageBox.Show("Do You Really Want to Delete record", s, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (delresult == DialogResult.Yes)
                     {
-                        SqlCeCommand cmd = connection.CreateCommand();
+
+                        using (connection = new SqlCeConnection(connectionString))
                         {
-                            connection.Open();
-                            cmd.CommandType = CommandType.Text;
-                            cmd.CommandText = "delete from SubMenuValue where Id=" + delete_id + "";
-                            cmd.ExecuteNonQuery();
-                            test_grid.Refresh();
+                            SqlCeCommand cmd = connection.CreateCommand();
+                            {
+                                connection.Open();
+                                cmd.CommandType = CommandType.Text;
+                                cmd.CommandText = "delete from SubMenuValue where Id=" + delete_id + "";
+                                cmd.ExecuteNonQuery();
+                                test_grid.Refresh();
+                            }
+                            Bindtest();
                         }
-                        Bindtest();
                     }
                 }
                 else if (colindex == 0 && test_grid.Columns[colindex].HeaderText == "Delete")
                 {
-                    using (connection = new SqlCeConnection(connectionString))
+                    DialogResult delresult = MessageBox.Show("Do You Really Want to Delete record", s, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (delresult == DialogResult.Yes)
                     {
-                        SqlCeCommand cmd = connection.CreateCommand();
+                        using (connection = new SqlCeConnection(connectionString))
                         {
-                            connection.Open();
-                            cmd.CommandType = CommandType.Text;
-                            cmd.CommandText = "delete from SubMenuValue where Id=" + delete_id + "";
-                            cmd.ExecuteNonQuery();
-                            test_grid.Refresh();
+                            SqlCeCommand cmd = connection.CreateCommand();
+                            {
+                                connection.Open();
+                                cmd.CommandType = CommandType.Text;
+                                cmd.CommandText = "delete from SubMenuValue where Id=" + delete_id + "";
+                                cmd.ExecuteNonQuery();
+                                test_grid.Refresh();
+                            }
+                            Bindtest();
                         }
-                        Bindtest();
                     }
                 }
             }
