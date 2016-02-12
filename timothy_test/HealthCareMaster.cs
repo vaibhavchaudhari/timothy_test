@@ -126,6 +126,10 @@ namespace timothy_test
             }
             try
             {
+                if (test_grid.DataSource != null)
+                {
+                    test_grid.DataSource = null;
+                }
                 //function for getting value of key in textbox txt_name
                 string keys = lst_disease.GetItemText(lst_disease.SelectedItem);
                 if (keys != "")
