@@ -239,12 +239,17 @@
             // 
             // test_grid
             // 
+            this.test_grid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.test_grid.BackgroundColor = System.Drawing.Color.White;
             this.test_grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.test_grid.GridColor = System.Drawing.Color.Maroon;
+            this.test_grid.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.test_grid.Location = new System.Drawing.Point(254, 46);
             this.test_grid.Name = "test_grid";
+            this.test_grid.RowHeadersVisible = false;
+            this.test_grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.test_grid.Size = new System.Drawing.Size(495, 225);
-            this.test_grid.TabIndex = 17;
+            this.test_grid.TabIndex = 16;
             this.test_grid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.test_grid_CellContentClick_1);
             this.test_grid.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.test_grid_CellValueChanged_1);
             // 

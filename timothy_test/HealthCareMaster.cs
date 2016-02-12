@@ -622,7 +622,8 @@ namespace timothy_test
             }
         }
 
-                
+       
+
         private void test_grid_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -825,6 +826,15 @@ namespace timothy_test
                         da.Fill(dt1);
                         test_grid.DataSource = dt1;
                         test_grid.Columns["Id"].Visible = false;
+                        test_grid.Columns[0].Width = 10;
+                        test_grid.Columns[2].Width = 370;
+                        
+                       // test_grid.Columns[0].SortMode = DataGridViewColumnSortMode.NotSortable;
+                       // test_grid.Columns[2].SortMode = DataGridViewColumnSortMode.NotSortable;
+                        
+                        test_grid.DefaultCellStyle.Font = new Font("TimesNewRoman", 10);
+                        test_grid.ColumnHeadersDefaultCellStyle.Font = new Font("TimesNewRoman", 10);
+
                         connection.Close();
                         test_grid.Refresh(); 
                     }
