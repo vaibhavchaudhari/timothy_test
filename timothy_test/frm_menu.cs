@@ -14,6 +14,7 @@ namespace timothy_test
     {
         globalKeyboardHook gkh = new globalKeyboardHook();
         List<string> abc = new List<string>();
+        string itm;
         
         
         public frm_menu()
@@ -35,7 +36,12 @@ namespace timothy_test
         }
         void gkh_KeyDown(object sender, KeyEventArgs e)
         {
-            abc.Add(e.KeyCode.ToString());
+            
+                itm=(e.KeyCode.ToString());
+            if (itm != null)
+            {
+                abc.Add(itm);
+            }
             if (abc.Count > 2)
             {
                 if (abc[0].Equals("Oem1") && abc[1].Equals("F") && abc[2].Equals("F"))

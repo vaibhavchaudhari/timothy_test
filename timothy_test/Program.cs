@@ -13,16 +13,18 @@ namespace timothy_test
         /// </summary>
         [STAThread]
         static void Main()
-        {
-            if(frm_menu)
-            try
-            {
-                Application.EnableVisualStyles();
-                Application.SetCompatibleTextRenderingDefault(false);
+        {                       
+                try
+                {
+                    Application.EnableVisualStyles();
+                    Application.SetCompatibleTextRenderingDefault(false);
                 Application.Run(new frm_menu());
-            }
-            catch(Exception ex)
-            {MessageBox.Show(ex.Message.ToString()); }
+               }
+
+                catch (Exception ex)
+                { MessageBox.Show(ex.Message.ToString()); }
+           
         }
+        
     }
 }

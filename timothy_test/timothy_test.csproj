@@ -104,6 +104,9 @@
     <EmbeddedResource Include="frm_menu.resx">
       <DependentUpon>frm_menu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frm_popupwindow.resx">
+      <DependentUpon>frm_popupwindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HealthCareMaster.resx">
       <DependentUpon>HealthCareMaster.cs</DependentUpon>
     </EmbeddedResource>
