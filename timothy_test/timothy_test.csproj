@@ -86,6 +86,12 @@
     <Compile Include="frm_menu.Designer.cs">
       <DependentUpon>frm_menu.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_popupwindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_popupwindow.Designer.cs">
+      <DependentUpon>frm_popupwindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="HealthCareMaster.cs">
       <SubType>Form</SubType>
     </Compile>
