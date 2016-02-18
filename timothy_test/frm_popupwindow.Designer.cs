@@ -37,14 +37,14 @@
             // 
             this.lst_main.BackColor = System.Drawing.SystemColors.Info;
             this.lst_main.FormattingEnabled = true;
-            this.lst_main.Location = new System.Drawing.Point(101, 50);
+            this.lst_main.Location = new System.Drawing.Point(84, -2);
             this.lst_main.Name = "lst_main";
-            this.lst_main.Size = new System.Drawing.Size(120, 95);
+            this.lst_main.Size = new System.Drawing.Size(185, 264);
             this.lst_main.TabIndex = 0;
             // 
             // btn_prev
             // 
-            this.btn_prev.Location = new System.Drawing.Point(12, 91);
+            this.btn_prev.Location = new System.Drawing.Point(3, 91);
             this.btn_prev.Name = "btn_prev";
             this.btn_prev.Size = new System.Drawing.Size(75, 23);
             this.btn_prev.TabIndex = 1;
@@ -53,7 +53,7 @@
             // 
             // btn_next
             // 
-            this.btn_next.Location = new System.Drawing.Point(236, 91);
+            this.btn_next.Location = new System.Drawing.Point(275, 91);
             this.btn_next.Name = "btn_next";
             this.btn_next.Size = new System.Drawing.Size(75, 23);
             this.btn_next.TabIndex = 2;
@@ -70,6 +70,7 @@
             this.Controls.Add(this.lst_main);
             this.Name = "frm_popupwindow";
             this.Text = "frm_popupwindow";
+            this.Load += new System.EventHandler(this.frm_popupwindow_Load);
             this.ResumeLayout(false);
 
         }
