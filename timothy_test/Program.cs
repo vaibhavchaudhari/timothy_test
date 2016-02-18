@@ -14,9 +14,14 @@ namespace timothy_test
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new HealthCareMaster());
+            try
+            {
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new frm_menu());
+            }
+            catch(Exception ex)
+            {MessageBox.Show(ex.Message.ToString()); }
         }
     }
 }

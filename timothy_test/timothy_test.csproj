@@ -80,6 +80,12 @@
     <Compile Include="BusinessLayer.cs" />
     <Compile Include="ControlExtensions.cs" />
     <Compile Include="DataLayer.cs" />
+    <Compile Include="frm_menu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_menu.Designer.cs">
+      <DependentUpon>frm_menu.cs</DependentUpon>
+    </Compile>
     <Compile Include="HealthCareMaster.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +94,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frm_menu.resx">
+      <DependentUpon>frm_menu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HealthCareMaster.resx">
       <DependentUpon>HealthCareMaster.cs</DependentUpon>
     </EmbeddedResource>

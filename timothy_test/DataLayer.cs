@@ -139,6 +139,10 @@ namespace timothy_test
                 cmd.ExecuteNonQuery();
                 cmd.Dispose();
                 con.Close();
+                if(newsubmenuekeyvalue.Count<=0)
+                {
+                    return("1");
+                }
                 int datacount = previousmenue.Rows.Count;
                 string[] previousmenuelist = new string[datacount];
                 for (int i = 0; i <= datacount - 1; i++)
@@ -167,7 +171,7 @@ namespace timothy_test
 
                 else if ((newsubmenuekeyvalue.Count) > (previousmenuelist.Length - 1))
                 {
-                    if (previousmenuelist[0] == "")
+                    if (previousmenuelist.Count() <= 0  || previousmenuelist ==null || previousmenuelist.Count()==0 || previousmenuelist[0] == "")
                     {
                         con.Open();
                         cmd = new SqlCeCommand("insert into SubMenuKey(MainMenuId,SubMenuKeyValue,IsMultipleChoice,AliasName) values(@id,@newmenuekey,@ismultiple,@aliasname)", con);
@@ -196,6 +200,10 @@ namespace timothy_test
                             }
                         }
                         count++;
+                    }
+                    if(count==0)
+                    {
+                        count = 1;
                     }
                     for (int z = (count); z <= newsubmenuekeyvalue.Count - 1; z++)
                     {

@@ -56,7 +56,7 @@ namespace timothy_test
         }
         private void GetAccessToken()
         {
-            var login = new DropboxLogin("4077k3k1tkb3oyj", "ipvghmm1wpbqewv");
+            var login = new DropboxLogin("c5kn5r830qldqiu", "plbkksu4jh97jfc");
             login.Owner = this;
             login.ShowDialog();
             if (login.IsSuccessfully)
@@ -72,14 +72,23 @@ namespace timothy_test
         private void btn_new_Click(object sender, EventArgs e)
         {
             function_clear();
-            status = "NEW";
+            status = "";
             lst_disease.SelectedIndex = -1;
             txt_name.Focus();
+            test_grid.DataSource = null;
+            test_grid.Columns.Clear();
+            status = "NEW";
         }
         private void btn_showall_Click(object sender, EventArgs e)
         {
             function_clear();
             bind_list();
+                if(test_grid.DataSource!=null)
+            {
+                test_grid.DataSource = null;
+                test_grid.Columns.Clear();
+            }
+            status = "NEW";
         }
         protected void function_clear()
         {
@@ -178,17 +187,23 @@ namespace timothy_test
                         connection.Open();
 
                         DataTable dt1 = new DataTable();
+                            if(lst_grid.DataSource!=null)
+                        {
+                            lst_grid.DataSource = null;
+                           
+                        }
                         dt1.Load(cmd.ExecuteReader());
                         {
                             lst_grid.DataSource = dt1;
                             int i = 1; foreach (DataGridViewRow row in lst_grid.Rows)
                             {
                                 row.Cells["serial_no"].Value = i;
+                                row.Cells["AliasName"].ToolTipText = row.Cells["AliasName"].Value.ToString();
                                 lst_grid.Rows[i - 1].Tag = row.Cells["Id"].Value;                               
                                 i++;
                             }
-                            lst_grid.Columns[1].Width = 30;
-                            lst_grid.Columns[2].Width = 150;
+                            lst_grid.Columns[1].Width = 60;
+                            lst_grid.Columns[2].Width = 130;
                             lst_grid.Columns[3].Width = 80;
                             lst_grid.Columns[1].SortMode = DataGridViewColumnSortMode.NotSortable;
                             lst_grid.Columns[2].SortMode = DataGridViewColumnSortMode.NotSortable;
@@ -223,7 +238,7 @@ namespace timothy_test
                 return;
             }
             else {
-                if (status == "NEW")
+                if (status.Equals("NEW"))
                 {
                     try
                     {
@@ -264,9 +279,12 @@ namespace timothy_test
                             {
                                 MessageBox.Show("Record Inserted Successfully.", s);
                                 nmmenu = txt_name.Text;
+                                if(lst_disease.Items.Count>=1)
+                                {
+                                    lst_disease.Items.Clear();
+                                }
                                 bind_list();
                                 MainWindow();
-                                //function_clear();
                                 data.Clear();
                                 Bind_firstgrid();
                                 int currentPrinterIndex = lst_disease.Items.IndexOf(nmmenu);
@@ -334,10 +352,12 @@ namespace timothy_test
                             Bind_firstgrid();
                             MessageBox.Show("Record Updated Successfully.", s);
                             nmmenu = txt_name.Text;
+                            if (lst_disease.Items.Count >= 1)
+                            {
+                                lst_disease.Items.Clear();
+                            }
                             bind_list();
                             nmmenu = txt_name.Text;
-                            bind_list();
-
                             MainWindow();
                             //function_clear();
                             data.Clear();
@@ -377,7 +397,7 @@ namespace timothy_test
             }
             else
             {
-                DialogResult delresult = MessageBox.Show("Do You Really Want to Delete", s, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                DialogResult delresult = MessageBox.Show("Do You Really Want to Delete?", s, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (delresult == DialogResult.Yes)
                 {
                     try
@@ -386,10 +406,17 @@ namespace timothy_test
                         ans = bl.delete_record(txt_name.Text);
                         if (!ans.Equals("0"))
                         {
+                            lst_disease.Items.Clear();
+                            if(test_grid.DataSource!=null)
+                            {
+                                test_grid.DataSource = null;
+                                test_grid.Columns.Clear();
+                            }
                             function_clear();
                             bind_list();
                             MessageBox.Show("Record Deleted Successfully.", s);
                             MainWindow();
+                            status = "NEW";
                             if (lst_disease.Items.Count == 0)
                             {
                                 status = "NEW";
@@ -474,7 +501,13 @@ namespace timothy_test
                             cmd.CommandText = "insert into SubMenuValue(SubMenuId,Value)values(" + text + ",'" + test_grid.Rows[e.RowIndex].Cells["Value"].Value.ToString() + "')";
                             cmd.ExecuteNonQuery();
                             connection.Close();
+                            if(test_grid.DataSource!=null)
+                            {
+                                test_grid.DataSource = null;
+                                test_grid.Columns.Clear();
+                            }
                             Bindtest();
+                            adddel();
                         }
 
                     }
@@ -547,7 +580,7 @@ namespace timothy_test
         }
 
         private void txt_description_KeyDown(object sender, KeyEventArgs e)
-        {
+       {
             try
             {
                 if (txt_description.Text != "")
@@ -622,9 +655,144 @@ namespace timothy_test
                 }
             }
         }
+
+        private void lst_disease_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btn_new.BackColor = SystemColors.Control;
+            if (status == "NEW")
+            {
+                status = "";
+            }
+            if (txt_description.Text != "")
+            {
+                txt_description.Text = "";
+                txt_description.Controls.Clear();
+            }
+            try
+            {
+                if (test_grid.DataSource != null)
+                {
+                    test_grid.DataSource = null;
+                    test_grid.Columns.Clear();
+                }
+
+
+                //function for getting value of key in textbox txt_name
+                string keys = lst_disease.GetItemText(lst_disease.SelectedItem);
+                if (keys != "")
+                {
+                    txt_name.Text = keys;
+                    DataTable decsreption = (bl.getvalue(keys));
+                    mainmenueupdateid = (Int32)decsreption.Rows[0]["Id"];
+                    Bind_firstgrid();
+                    DataTable submenulist = bl.fillsubmenulist(mainmenueupdateid);
+                    if (data.Count > 0)
+                    {
+                        data.Clear();
+                    }
+                    if (submenulist != null && submenulist.Rows.Count > 0)
+                    {
+                        foreach (DataRow row in submenulist.Rows)
+                        {
+                            data.Add(new KeyValuePair<string, string>(row["SubMenuKeyValue"].ToString(), row["AliasName"].ToString()));
+                        }
+                    }
+                    txt_description.Text = decsreption.Rows[0]["Value"].ToString();
+                    if (data.Count > 0)
+                    {
+                        lbl_mainmenuname.Text = txt_name.Text;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString(), s);
+            }
+
+        }
+
+        private void lst_grid_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            int colindex = lst_grid.CurrentCell.ColumnIndex;
+            if (colindex == 3 && lst_grid.Columns[colindex].HeaderText == "MultiValue")
+            { return; }
+                int a = e.RowIndex;
+            if (e.ColumnIndex > -1 && e.RowIndex > -1)
+            {
+                if (test_grid.Columns.Contains("btn"))
+                { test_grid.Columns.Remove("btn"); }
+                text = lst_grid.Rows[e.RowIndex].Cells[1].Value.ToString();
+                Bindtest();
+                adddel();
+            }
+            if (e.ColumnIndex == 3)
+            {
+                DataGridViewCheckBoxCell ch1 = new DataGridViewCheckBoxCell();
+                ch1 = (DataGridViewCheckBoxCell)lst_grid.Rows[lst_grid.CurrentRow.Index].Cells[3];
+                if (ch1.Value == null)
+                {
+                    ch1.Value = false;
+                }
+                switch (ch1.Value.ToString())
+                {
+                    case "True":
+                        ch1.Value = false;
+                        break;
+                    case "False":
+                        ch1.Value = true;
+                        break;
+                }
+                if (ch1.Value.ToString().Equals("True"))
+                {
+                    using (connection = new SqlCeConnection(connectionString))
+                    {
+                        using (SqlCeCommand cmd = new SqlCeCommand("Update SubMenuKey set IsMultipleChoice=1 where Id=" + text + "", connection))
+                        {
+                            connection.Open();
+                            result = cmd.ExecuteNonQuery().ToString();
+                            connection.Close();
+                            if (result == null)
+                            {
+                                MessageBox.Show("Record Was Not Updated!", s);
+                            }
+                            else
+                            {
+                                MessageBox.Show("MultiValue Updated.", s);
+                                Bindtest();
+                            }
+                        }
+                    }
+                }
+
+                else if (ch1.Value.ToString().Equals("False"))
+                {
+                    using (connection = new SqlCeConnection(connectionString))
+                    {
+                        using (SqlCeCommand cmd = new SqlCeCommand("Update SubMenuKey set IsMultipleChoice=0 where Id=" + text + "", connection))
+                        {
+                            connection.Open();
+                            result = cmd.ExecuteNonQuery().ToString();
+                            connection.Close();
+                            if (result == null)
+                            {
+                                MessageBox.Show("Record Was Not Updated!", s);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Record Updated Successfully.", s);
+                                Bindtest();
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
         private void test_grid_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
-
+           
+           
             if (test_grid.RowCount - 1 == test_grid.CurrentCell.RowIndex)
             {
                 return;
@@ -642,7 +810,7 @@ namespace timothy_test
                 int colindex = test_grid.CurrentCell.ColumnIndex;
                 if (colindex == 3 && test_grid.Columns[colindex].HeaderText == "Delete")
                 {
-                    DialogResult delresult = MessageBox.Show("Do You Really Want to Delete record", s, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    DialogResult delresult = MessageBox.Show("Do You Really Want to Delete record?", s, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (delresult == DialogResult.Yes)
                     {
                         using (connection = new SqlCeConnection(connectionString))
@@ -663,7 +831,7 @@ namespace timothy_test
 
                 else if (colindex == 1 && test_grid.Columns[colindex].HeaderText == "Delete")
                 {
-                    DialogResult delresult = MessageBox.Show("Do You Really Want to Delete record", s, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    DialogResult delresult = MessageBox.Show("Do You Really Want to Delete record?", s, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (delresult == DialogResult.Yes)
                     {
 
@@ -683,7 +851,7 @@ namespace timothy_test
                 }
                 else if (colindex == 0 && test_grid.Columns[colindex].HeaderText == "Delete")
                 {
-                    DialogResult delresult = MessageBox.Show("Do You Really Want to Delete record", s, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    DialogResult delresult = MessageBox.Show("Do You Really Want to Delete record?", s, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (delresult == DialogResult.Yes)
                     {
                         using (connection = new SqlCeConnection(connectionString))

@@ -187,6 +187,7 @@
             this.lst_disease.Size = new System.Drawing.Size(190, 166);
             this.lst_disease.TabIndex = 8;
             this.lst_disease.Click += new System.EventHandler(this.lst_disease_Click);
+            this.lst_disease.SelectedIndexChanged += new System.EventHandler(this.lst_disease_SelectedIndexChanged);
             // 
             // btn_showall
             // 
@@ -244,11 +245,11 @@
             this.test_grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.test_grid.GridColor = System.Drawing.Color.Maroon;
             this.test_grid.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.test_grid.Location = new System.Drawing.Point(254, 46);
+            this.test_grid.Location = new System.Drawing.Point(325, 46);
             this.test_grid.Name = "test_grid";
             this.test_grid.RowHeadersVisible = false;
             this.test_grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.test_grid.Size = new System.Drawing.Size(495, 225);
+            this.test_grid.Size = new System.Drawing.Size(424, 225);
             this.test_grid.TabIndex = 16;
             this.test_grid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.test_grid_CellContentClick_1);
             this.test_grid.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.test_grid_CellValueChanged_1);
@@ -279,15 +280,16 @@
             this.lst_grid.ReadOnly = true;
             this.lst_grid.RowHeadersVisible = false;
             this.lst_grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.lst_grid.Size = new System.Drawing.Size(186, 225);
+            this.lst_grid.Size = new System.Drawing.Size(254, 225);
             this.lst_grid.TabIndex = 16;
             this.lst_grid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.lst_grid_CellClick_1);
+            this.lst_grid.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.lst_grid_CellEnter);
             // 
             // serial_no
             // 
             this.serial_no.HeaderText = "Sr.No.";
             this.serial_no.MaxInputLength = 100;
-            this.serial_no.MinimumWidth = 2;
+            this.serial_no.MinimumWidth = 60;
             this.serial_no.Name = "serial_no";
             this.serial_no.ReadOnly = true;
             this.serial_no.Resizable = System.Windows.Forms.DataGridViewTriState.False;
@@ -344,11 +346,11 @@
         private System.Windows.Forms.Button btn_showall;
         private System.Windows.Forms.DataGridView lst_grid;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn serial_no;
         private System.Windows.Forms.Label lbl_mainmenuname;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridView test_grid;
         private System.Windows.Forms.Button Sync;
+        private System.Windows.Forms.DataGridViewTextBoxColumn serial_no;
     }
 }
 
