@@ -92,6 +92,7 @@
     <Compile Include="frm_popupwindow.Designer.cs">
       <DependentUpon>frm_popupwindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="globalKeyboardHook.cs" />
     <Compile Include="HealthCareMaster.cs">
       <SubType>Form</SubType>
     </Compile>

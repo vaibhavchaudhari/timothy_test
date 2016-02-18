@@ -14,6 +14,7 @@ namespace timothy_test
         [STAThread]
         static void Main()
         {
+            if(frm_menu)
             try
             {
                 Application.EnableVisualStyles();

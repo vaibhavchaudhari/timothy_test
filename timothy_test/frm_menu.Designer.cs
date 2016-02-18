@@ -71,7 +71,7 @@
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 26);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
             // frm_menu
             // 
@@ -82,6 +82,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frm_menu";
             this.Text = "frm_menu";
+            this.Load += new System.EventHandler(this.frm_menu_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
