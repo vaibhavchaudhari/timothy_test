@@ -391,8 +391,7 @@ namespace timothy_test
             try
             {
                 con.Open();
-                cmd = new SqlCeCommand("SELECT count(*) from SubMenuKey where MainMenuId='" + mainmenuid + "'", con);
-                DataTable dt = new DataTable();
+                cmd = new SqlCeCommand("SELECT count(*) from SubMenuKey where MainMenuId='" + mainmenuid + "'", con);               
                 int count=(Int32)cmd.ExecuteScalar();
                 con.Close();
                 cmd.Dispose();
@@ -407,5 +406,53 @@ namespace timothy_test
                 throw (e);
             }
         }
+
+        public DataTable getsubmenus(int mainmenuid, string submenuname)
+        {
+            try
+            {
+                con.Open();
+                cmd = new SqlCeCommand("SELECT Id from SubMenuKey where MainMenuId='" + mainmenuid + "' and SubMenuKeyValue='" + submenuname + "' ", con);
+                int ID = (Int32)cmd.ExecuteScalar();
+                cmd.Dispose();
+                con.Close();
+                con.Open();
+                cmd = new SqlCeCommand("SELECT Value FROM SubMenuValue where SubMenuId='" + ID + "'", con);
+                DataTable dt = new DataTable();
+                dt.Load(cmd.ExecuteReader());
+                con.Close();
+                cmd.Dispose();
+                return (dt);
+            }
+            catch (Exception e)
+            {
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+                throw (e);
+            }
+        }
+        public int getismultiple(int mainmenuid, string submenuname)
+        {
+            try
+            {
+                con.Open();
+                cmd = new SqlCeCommand("SELECT IsMultipleChoice from SubMenuKey where MainMenuId='" + mainmenuid + "' and SubMenuKeyValue='" + submenuname + "' ", con);
+                int ismultiple = Convert.ToInt16(cmd.ExecuteScalar());
+                cmd.Dispose();
+                con.Close();
+                return (ismultiple);              
+            }
+            catch (Exception e)
+            {
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+                throw (e);
+            }
+        }
+
     }
 }

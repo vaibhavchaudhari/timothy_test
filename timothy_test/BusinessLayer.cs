@@ -64,5 +64,13 @@ namespace timothy_test
         {
         return(dl.getsubmenucount(mainmenuid));
         }
+        public DataTable getsubmenus(int mainmenuid,string submenuname)
+        {
+            return (dl.getsubmenus(mainmenuid, submenuname));
+        }
+        public int getismultiple(int mainmenuid, string submenuname)
+        {
+            return (dl.getismultiple(mainmenuid, submenuname));
+        }
     }
 }
