@@ -35,9 +35,8 @@ namespace timothy_test
             gkh.KeyDown += new KeyEventHandler(gkh_KeyDown);
         }
         void gkh_KeyDown(object sender, KeyEventArgs e)
-        {
-            
-                itm=(e.KeyCode.ToString());
+        {        
+           itm =(e.KeyCode.ToString());
             if (itm != null)
             {
                 abc.Add(itm);

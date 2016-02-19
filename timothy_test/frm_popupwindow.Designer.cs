@@ -41,6 +41,7 @@
             this.lst_main.Name = "lst_main";
             this.lst_main.Size = new System.Drawing.Size(185, 264);
             this.lst_main.TabIndex = 0;
+            this.lst_main.SelectedIndexChanged += new System.EventHandler(this.lst_main_SelectedIndexChanged);
             // 
             // btn_prev
             // 
@@ -59,6 +60,7 @@
             this.btn_next.TabIndex = 2;
             this.btn_next.Text = "next";
             this.btn_next.UseVisualStyleBackColor = true;
+            this.btn_next.Click += new System.EventHandler(this.btn_next_Click);
             // 
             // frm_popupwindow
             // 

@@ -385,5 +385,27 @@ namespace timothy_test
                 throw (e);
             }
         }
+
+        public int getsubmenucount(int mainmenuid)
+        {
+            try
+            {
+                con.Open();
+                cmd = new SqlCeCommand("SELECT count(*) from SubMenuKey where MainMenuId='" + mainmenuid + "'", con);
+                DataTable dt = new DataTable();
+                int count=(Int32)cmd.ExecuteScalar();
+                con.Close();
+                cmd.Dispose();
+                return (count);
+            }
+            catch (Exception e)
+            {
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+                throw (e);
+            }
+        }
     }
 }

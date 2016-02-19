@@ -60,6 +60,9 @@ namespace timothy_test
             return (dl.fillsubmenulist(mainmenueupdateid));
         }
 
-       
+       public int getsubmenucount(int mainmenuid)
+        {
+        return(dl.getsubmenucount(mainmenuid));
+        }
     }
 }
