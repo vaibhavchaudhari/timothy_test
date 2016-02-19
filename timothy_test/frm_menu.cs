@@ -35,23 +35,17 @@ namespace timothy_test
             gkh.KeyDown += new KeyEventHandler(gkh_KeyDown);
         }
         void gkh_KeyDown(object sender, KeyEventArgs e)
-        {        
-           itm =(e.KeyCode.ToString());
-            if (itm != null)
-            {
-                abc.Add(itm);
-            }
+        {
+                abc.Add(e.KeyCode.ToString());
             if (abc.Count > 2)
             {
                 if (abc[0].Equals("Oem1") && abc[1].Equals("F") && abc[2].Equals("F"))
                 {
-                    frm_popupwindow poup = new frm_popupwindow();
-                    poup.Show();
+                    frm_popupwindow popup = new frm_popupwindow();
+                    popup.Show();
+                    abc.Clear();
                 }
-                abc.Clear();
             }
-            e.Handled = true;
         }
-
-    }
+ }
 }
