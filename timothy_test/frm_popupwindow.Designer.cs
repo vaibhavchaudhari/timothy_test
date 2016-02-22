@@ -36,6 +36,7 @@
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.lbl_selectiontype = new System.Windows.Forms.Label();
             this.txt_displaytext = new System.Windows.Forms.TextBox();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.SuspendLayout();
             // 
             // lst_main
@@ -103,6 +104,12 @@
             this.txt_displaytext.Size = new System.Drawing.Size(308, 151);
             this.txt_displaytext.TabIndex = 4;
             // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "Health Care ";
+            this.notifyIcon1.Visible = true;
+            // 
             // frm_popupwindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -129,5 +136,6 @@
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.Label lbl_selectiontype;
         private System.Windows.Forms.TextBox txt_displaytext;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
     }
 }
