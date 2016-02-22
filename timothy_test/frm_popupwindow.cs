@@ -85,6 +85,7 @@ namespace timothy_test
                     { bind_list();
                     btn_prev.Visible = false;
                     txt_displaytext.Text = "";
+                    lbl_selectiontype.Text = "";
                 }
                 if (cnt >= 1 && cnt <= maxcnt)
                 {

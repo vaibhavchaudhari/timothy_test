@@ -15,12 +15,17 @@ namespace timothy_test
         globalKeyboardHook gkh = new globalKeyboardHook();
         List<string> abc = new List<string>();
         string itm;
+       
         
         
         public frm_menu()
         {
             InitializeComponent();
+            lbl_comment.Text ="          Press :ff"+Environment.NewLine+ " on text editor to activate" + Environment.NewLine + "Smart Suggestion Window.";
+
+
         }
+
 
         private void adminToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -47,5 +52,10 @@ namespace timothy_test
                 }
             }
         }
- }
+
+        private void runOnStartupToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
+    }
 }

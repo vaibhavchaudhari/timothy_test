@@ -41,7 +41,7 @@
             // 
             // lst_main
             // 
-            this.lst_main.BackColor = System.Drawing.Color.Wheat;
+            this.lst_main.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(223)))));
             this.lst_main.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lst_main.FormattingEnabled = true;
             this.lst_main.ItemHeight = 18;
@@ -87,7 +87,7 @@
             // 
             this.lbl_selectiontype.AutoSize = true;
             this.lbl_selectiontype.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_selectiontype.ForeColor = System.Drawing.Color.Maroon;
+            this.lbl_selectiontype.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(39)))), ((int)(((byte)(0)))));
             this.lbl_selectiontype.Location = new System.Drawing.Point(93, 15);
             this.lbl_selectiontype.Name = "lbl_selectiontype";
             this.lbl_selectiontype.Size = new System.Drawing.Size(0, 16);
@@ -95,7 +95,7 @@
             // 
             // txt_displaytext
             // 
-            this.txt_displaytext.BackColor = System.Drawing.Color.Wheat;
+            this.txt_displaytext.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(223)))));
             this.txt_displaytext.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_displaytext.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.txt_displaytext.Location = new System.Drawing.Point(96, 297);
@@ -114,13 +114,16 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(223)))), ((int)(((byte)(223)))));
             this.ClientSize = new System.Drawing.Size(509, 498);
             this.Controls.Add(this.txt_displaytext);
             this.Controls.Add(this.lbl_selectiontype);
             this.Controls.Add(this.btn_next);
             this.Controls.Add(this.btn_prev);
             this.Controls.Add(this.lst_main);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frm_popupwindow";
+            this.Text = "Health Care";
             this.Load += new System.EventHandler(this.frm_popupwindow_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
