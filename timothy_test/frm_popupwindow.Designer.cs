@@ -112,7 +112,6 @@
             this.Controls.Add(this.btn_prev);
             this.Controls.Add(this.lst_main);
             this.Name = "frm_popupwindow";
-            this.Text = ":";
             this.Load += new System.EventHandler(this.frm_popupwindow_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
