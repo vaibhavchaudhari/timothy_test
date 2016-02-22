@@ -87,9 +87,8 @@
             this.lbl_selectiontype.ForeColor = System.Drawing.Color.Maroon;
             this.lbl_selectiontype.Location = new System.Drawing.Point(93, 15);
             this.lbl_selectiontype.Name = "lbl_selectiontype";
-            this.lbl_selectiontype.Size = new System.Drawing.Size(45, 16);
+            this.lbl_selectiontype.Size = new System.Drawing.Size(0, 16);
             this.lbl_selectiontype.TabIndex = 3;
-            this.lbl_selectiontype.Text = "label1";
             // 
             // txt_displaytext
             // 

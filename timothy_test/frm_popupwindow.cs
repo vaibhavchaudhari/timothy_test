@@ -31,6 +31,7 @@ namespace timothy_test
         private void frm_popupwindow_Load(object sender, EventArgs e)
         {
             bind_list();
+            btn_prev.Visible = false;
         }
 
         public void bind_list()
@@ -66,18 +67,21 @@ namespace timothy_test
                     cnt--;
                 }
                     if (cnt == 0)
-                    { bind_list(); }
+                    { bind_list();
+                    btn_prev.Visible = false;
+                }
                 if (cnt >= 1 && cnt <= maxcnt)
                 {
+                    if (btn_next.Visible == false) { btn_next.Visible = true; }
                     string newchar = list[cnt - 1].ToString();
                     string oldchar = newmenu[cnt-1].ToString();
                     descreption = descreption.Replace((oldchar), (newchar));
                     //selectediteam = newchar;
-                    //MessageBox.Show(descreption);
-                    txt_displaytext.Text = descreption;
+                    MessageBox.Show(descreption);
                 }
                 if (cnt >= 1 && cnt <= maxcnt)
                     {
+                    if (btn_next.Visible == false) { btn_next.Visible = true; }
                         submenuname = "menu" + cnt;
                         dt = bl.getsubmenus(mainmenuid, submenuname);
                         if (lst_main.Items.Count > 0)
@@ -125,6 +129,7 @@ namespace timothy_test
                     cnt++;
                     if (cnt == 1)
                     {
+                        btn_prev.Visible = true;
                         for (int i = 0; i < data.Count; i++)
                         {
                             if (data[i].Value == lst_main.SelectedItem.ToString())
@@ -172,8 +177,7 @@ namespace timothy_test
                                 newmenu.Add(newchar);
                                 descreption = descreption.Replace((oldchar), (newchar));
                                 selectediteam = newchar;
-                                //MessageBox.Show(descreption);
-                                txt_displaytext.Text = descreption;
+                                MessageBox.Show(descreption);
                             }
                         }
                         else
@@ -183,13 +187,13 @@ namespace timothy_test
                             newmenu.Add(newchar);
                             descreption = descreption.Replace((oldchar), (newchar));
                             selectediteam = newchar;
-                            //MessageBox.Show(descreption);
-                            txt_displaytext.Text = descreption;
+                            MessageBox.Show(descreption);
                         }
                         if(cnt==maxcnt+1)
                         {
                             Clipboard.SetDataObject(descreption, false, 5, 100);
                             SendKeys.SendWait("^V");
+                            btn_next.Visible = false;
                         }
                     }
                     if (cnt >= 1 && cnt <= maxcnt)
