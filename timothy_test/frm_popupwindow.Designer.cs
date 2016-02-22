@@ -49,6 +49,8 @@
             this.lst_main.Size = new System.Drawing.Size(308, 220);
             this.lst_main.TabIndex = 0;
             this.lst_main.SelectedIndexChanged += new System.EventHandler(this.lst_main_SelectedIndexChanged);
+            this.lst_main.DoubleClick += new System.EventHandler(this.lst_main_DoubleClick);
+            this.lst_main.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lst_main_KeyDown);
             // 
             // btn_prev
             // 

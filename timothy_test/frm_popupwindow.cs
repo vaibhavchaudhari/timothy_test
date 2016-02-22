@@ -23,6 +23,20 @@ namespace timothy_test
         List<int> listBox1_selection = new List<int>();
         List<KeyValuePair<int,string>> data = new List<KeyValuePair<int,string>>();
 
+        private void lst_main_DoubleClick(object sender, EventArgs e)
+        {
+            if (lst_main.SelectionMode == SelectionMode.One)
+            { btn_next_Click(sender, e); }
+        }
+
+        private void lst_main_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode==(Keys.Enter))
+            {
+                btn_next_Click(sender, e);
+            }
+        }
+
         public frm_popupwindow()
         {
             InitializeComponent();
@@ -32,6 +46,7 @@ namespace timothy_test
         {
             bind_list();
             btn_prev.Visible = false;
+            btn_next.Enabled = false;
         }
 
         public void bind_list()
@@ -124,7 +139,10 @@ namespace timothy_test
 
         private void lst_main_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            if(btn_next.Enabled ==false)
+            {
+                btn_next.Enabled = true;
+            }
             if (lst_main.SelectionMode == SelectionMode.MultiSimple)
             {
                 TrackSelectionChange((System.Windows.Forms.ListBox)sender, listBox1_selection);
@@ -243,6 +261,7 @@ namespace timothy_test
                             lst_main.Items.Add(r["Value"].ToString());
                            // list.Add(r["Value"].ToString());
                         }
+                        btn_next.Enabled = false;
                         flag = bl.getismultiple(mainmenuid, submenuname);
                         if (flag == 1)
                         {
