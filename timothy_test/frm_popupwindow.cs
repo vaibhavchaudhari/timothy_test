@@ -69,6 +69,7 @@ namespace timothy_test
                     if (cnt == 0)
                     { bind_list();
                     btn_prev.Visible = false;
+                    txt_displaytext.Text = "";
                 }
                 if (cnt >= 1 && cnt <= maxcnt)
                 {
@@ -77,7 +78,8 @@ namespace timothy_test
                     string oldchar = newmenu[cnt-1].ToString();
                     descreption = descreption.Replace((oldchar), (newchar));
                     //selectediteam = newchar;
-                    MessageBox.Show(descreption);
+                   
+                    txt_displaytext.Text = descreption;
                 }
                 if (cnt >= 1 && cnt <= maxcnt)
                     {
@@ -94,7 +96,17 @@ namespace timothy_test
                             list.Add(r["Value"].ToString());
                         }
                     flag = bl.getismultiple(mainmenuid, submenuname);
+                    if (flag == 1)
+                    {
+                        lst_main.SelectionMode = SelectionMode.MultiSimple;
+                        lbl_selectiontype.Text = "Can Select Multiple Values.";
                     }
+                    else {
+                        lst_main.SelectionMode = SelectionMode.One;
+                        lbl_selectiontype.Text = "Select Single Value.";
+                    }
+                }
+
             }
             catch (Exception ex)
             {
@@ -108,7 +120,9 @@ namespace timothy_test
             if (lst_main.SelectionMode == SelectionMode.MultiSimple)
             {
                 TrackSelectionChange((System.Windows.Forms.ListBox)sender, listBox1_selection);
+                
             }
+           
         }
         private void TrackSelectionChange(System.Windows.Forms.ListBox lb, List<int> selection)
         {
@@ -124,6 +138,10 @@ namespace timothy_test
         {
             try
             {
+                if (btn_prev.Visible == false && newmenu.Count > 0)
+                {
+                    newmenu.Clear();
+                }
                 if (lst_main.SelectedIndex > -1)
                 {
                     cnt++;
@@ -140,6 +158,7 @@ namespace timothy_test
                             }
                         }
                         descreption = bl.getdescreption(mainmenuid);
+                        txt_displaytext.Text = descreption;
                         var pattern = @"(\#(?:.*?)\#)";
                         if (list.Count > 0)
                         {
@@ -177,7 +196,8 @@ namespace timothy_test
                                 newmenu.Add(newchar);
                                 descreption = descreption.Replace((oldchar), (newchar));
                                 selectediteam = newchar;
-                                MessageBox.Show(descreption);
+                               
+                                txt_displaytext.Text = descreption;
                             }
                         }
                         else
@@ -187,13 +207,18 @@ namespace timothy_test
                             newmenu.Add(newchar);
                             descreption = descreption.Replace((oldchar), (newchar));
                             selectediteam = newchar;
-                            MessageBox.Show(descreption);
+                            
+                            txt_displaytext.Text = descreption;
                         }
                         if(cnt==maxcnt+1)
                         {
                             Clipboard.SetDataObject(descreption, false, 5, 100);
                             SendKeys.SendWait("^V");
                             btn_next.Visible = false;
+                            lst_main.Items.Clear();
+                            lbl_selectiontype.Text = "";
+                            
+                            
                         }
                     }
                     if (cnt >= 1 && cnt <= maxcnt)

@@ -83,7 +83,7 @@
             // lbl_selectiontype
             // 
             this.lbl_selectiontype.AutoSize = true;
-            this.lbl_selectiontype.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_selectiontype.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_selectiontype.ForeColor = System.Drawing.Color.Maroon;
             this.lbl_selectiontype.Location = new System.Drawing.Point(93, 15);
             this.lbl_selectiontype.Name = "lbl_selectiontype";
@@ -112,7 +112,6 @@
             this.Controls.Add(this.btn_prev);
             this.Controls.Add(this.lst_main);
             this.Name = "frm_popupwindow";
-            this.Text = "frm_popupwindow";
             this.Load += new System.EventHandler(this.frm_popupwindow_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
