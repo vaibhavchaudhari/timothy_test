@@ -23,14 +23,6 @@ namespace timothy_test
         List<int> listBox1_selection = new List<int>();
         List<KeyValuePair<int,string>> data = new List<KeyValuePair<int,string>>();
 
-        private void lst_main_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            if (lst_main.SelectionMode == SelectionMode.One)
-            {
-                btn_next_Click(sender, e);
-            }
-        }
-
         public frm_popupwindow()
         {
             InitializeComponent();
@@ -133,7 +125,7 @@ namespace timothy_test
         private void lst_main_SelectedIndexChanged(object sender, EventArgs e)
         {
             
-                if (lst_main.SelectionMode == SelectionMode.MultiSimple)
+            if (lst_main.SelectionMode == SelectionMode.MultiSimple)
             {
                 TrackSelectionChange((System.Windows.Forms.ListBox)sender, listBox1_selection);
                 
@@ -207,7 +199,7 @@ namespace timothy_test
                                     Tags = Tags.Insert((Tags.LastIndexOf(',')), " " + "and" + " ");
                                     Tags = Tags.Remove(Tags.LastIndexOf(','), 1);
                                 }
-                                string oldchar = list[cnt - 2].ToString();
+                                    string oldchar = list[cnt - 2].ToString();
                                 string newchar = Tags;
                                 newmenu.Add(newchar);
                                 descreption = descreption.Replace((oldchar), (newchar));
@@ -239,7 +231,7 @@ namespace timothy_test
                     }
                     if (cnt >= 1 && cnt <= maxcnt)
                     {
-                       
+                        
                         submenuname = "menu" + cnt;
                         dt = bl.getsubmenus(mainmenuid, submenuname);                       
                         if (lst_main.Items.Count > 0)
