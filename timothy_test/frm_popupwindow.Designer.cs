@@ -28,15 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_popupwindow));
             this.lst_main = new System.Windows.Forms.ListBox();
             this.btn_prev = new System.Windows.Forms.Button();
             this.btn_next = new System.Windows.Forms.Button();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.lbl_selectiontype = new System.Windows.Forms.Label();
             this.txt_displaytext = new System.Windows.Forms.TextBox();
-            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.SuspendLayout();
             // 
             // lst_main
@@ -77,12 +74,6 @@
             this.btn_next.UseVisualStyleBackColor = false;
             this.btn_next.Click += new System.EventHandler(this.btn_next_Click);
             // 
-            // imageList1
-            // 
-            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            // 
             // lbl_selectiontype
             // 
             this.lbl_selectiontype.AutoSize = true;
@@ -103,12 +94,6 @@
             this.txt_displaytext.Name = "txt_displaytext";
             this.txt_displaytext.Size = new System.Drawing.Size(308, 151);
             this.txt_displaytext.TabIndex = 4;
-            // 
-            // notifyIcon1
-            // 
-            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
-            this.notifyIcon1.Text = "Health Care ";
-            this.notifyIcon1.Visible = true;
             // 
             // frm_popupwindow
             // 
@@ -133,9 +118,7 @@
         private System.Windows.Forms.ListBox lst_main;
         private System.Windows.Forms.Button btn_prev;
         private System.Windows.Forms.Button btn_next;
-        private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.Label lbl_selectiontype;
         private System.Windows.Forms.TextBox txt_displaytext;
-        private System.Windows.Forms.NotifyIcon notifyIcon1;
     }
 }

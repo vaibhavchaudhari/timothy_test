@@ -16,8 +16,8 @@ namespace timothy_test
     {
         DataTable dt = new DataTable();
         BusinessLayer bl = new BusinessLayer();
-        int cnt = 0, maxcnt = 0, mainmenuid=0, flag,previoscount=0;
-        string submenuname,descreption,selectediteam,Ta;
+        int cnt = 0, maxcnt = 0, mainmenuid=0, flag;
+        string submenuname,descreption,selectediteam;
         List<string> list = new List<string>();
         List<string> newmenu = new List<string>();
         List<int> listBox1_selection = new List<int>();
