@@ -72,5 +72,9 @@ namespace timothy_test
         {
             return (dl.getismultiple(mainmenuid, submenuname));
         }
+        public string getdescreption(int Key)
+        {
+            return( dl.getdescreption(Key));
+        }
     }
 }

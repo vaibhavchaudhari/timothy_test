@@ -139,9 +139,9 @@ namespace timothy_test
                 cmd.ExecuteNonQuery();
                 cmd.Dispose();
                 con.Close();
-                if(newsubmenuekeyvalue.Count<=0)
+                if (newsubmenuekeyvalue.Count <= 0)
                 {
-                    return("1");
+                    return ("1");
                 }
                 int datacount = previousmenue.Rows.Count;
                 string[] previousmenuelist = new string[datacount];
@@ -171,7 +171,7 @@ namespace timothy_test
 
                 else if ((newsubmenuekeyvalue.Count) > (previousmenuelist.Length - 1))
                 {
-                    if (previousmenuelist.Count() <= 0  || previousmenuelist ==null || previousmenuelist.Count()==0 || previousmenuelist[0] == "")
+                    if (previousmenuelist.Count() <= 0 || previousmenuelist == null || previousmenuelist.Count() == 0 || previousmenuelist[0] == "")
                     {
                         con.Open();
                         cmd = new SqlCeCommand("insert into SubMenuKey(MainMenuId,SubMenuKeyValue,IsMultipleChoice,AliasName) values(@id,@newmenuekey,@ismultiple,@aliasname)", con);
@@ -201,7 +201,7 @@ namespace timothy_test
                         }
                         count++;
                     }
-                    if(count==0)
+                    if (count == 0)
                     {
                         count = 1;
                     }
@@ -391,8 +391,8 @@ namespace timothy_test
             try
             {
                 con.Open();
-                cmd = new SqlCeCommand("SELECT count(*) from SubMenuKey where MainMenuId='" + mainmenuid + "'", con);               
-                int count=(Int32)cmd.ExecuteScalar();
+                cmd = new SqlCeCommand("SELECT count(*) from SubMenuKey where MainMenuId='" + mainmenuid + "'", con);
+                int count = (Int32)cmd.ExecuteScalar();
                 con.Close();
                 cmd.Dispose();
                 return (count);
@@ -442,7 +442,7 @@ namespace timothy_test
                 int ismultiple = Convert.ToInt16(cmd.ExecuteScalar());
                 cmd.Dispose();
                 con.Close();
-                return (ismultiple);              
+                return (ismultiple);
             }
             catch (Exception e)
             {
@@ -453,6 +453,27 @@ namespace timothy_test
                 throw (e);
             }
         }
+        public string getdescreption(int Key)
+        {
+            try
+            {
+                con.Open();
+                cmd = new SqlCeCommand("SELECT Value from MainMenu where Id='" + Key + "'", con);
+                string value = cmd.ExecuteScalar().ToString();
+                cmd.Dispose();
+                con.Close();
+                return (value);
+            }
+            catch (Exception e)
+            {
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+                throw (e);
+            }
 
+
+        }
     }
 }
