@@ -19,6 +19,8 @@ namespace timothy_test
         public frm_menu()
         {
             InitializeComponent();
+            lbl_comment.Text = "          Press :ff" + Environment.NewLine + "on text editor to activate" + Environment.NewLine + "Smart Suggestion Window.";
+            
         }
 
         private void adminToolStripMenuItem_Click(object sender, EventArgs e)
