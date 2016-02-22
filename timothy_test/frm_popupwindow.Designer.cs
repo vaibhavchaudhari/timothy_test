@@ -94,6 +94,7 @@
             // txt_displaytext
             // 
             this.txt_displaytext.BackColor = System.Drawing.Color.Wheat;
+            this.txt_displaytext.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_displaytext.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.txt_displaytext.Location = new System.Drawing.Point(96, 297);
             this.txt_displaytext.Multiline = true;

@@ -73,7 +73,8 @@ namespace timothy_test
                     string oldchar = newmenu[cnt-1].ToString();
                     descreption = descreption.Replace((oldchar), (newchar));
                     //selectediteam = newchar;
-                    MessageBox.Show(descreption);
+                    //MessageBox.Show(descreption);
+                    txt_displaytext.Text = descreption;
                 }
                 if (cnt >= 1 && cnt <= maxcnt)
                     {
@@ -171,7 +172,8 @@ namespace timothy_test
                                 newmenu.Add(newchar);
                                 descreption = descreption.Replace((oldchar), (newchar));
                                 selectediteam = newchar;
-                                MessageBox.Show(descreption);
+                                //MessageBox.Show(descreption);
+                                txt_displaytext.Text = descreption;
                             }
                         }
                         else
@@ -181,7 +183,8 @@ namespace timothy_test
                             newmenu.Add(newchar);
                             descreption = descreption.Replace((oldchar), (newchar));
                             selectediteam = newchar;
-                            MessageBox.Show(descreption);
+                            //MessageBox.Show(descreption);
+                            txt_displaytext.Text = descreption;
                         }
                         if(cnt==maxcnt+1)
                         {
@@ -207,8 +210,11 @@ namespace timothy_test
                         if (flag == 1)
                         {
                             lst_main.SelectionMode = SelectionMode.MultiSimple;
+                            lbl_selectiontype.Text = "Can Select Multiple Values.";
                         }
-                        else { lst_main.SelectionMode = SelectionMode.One; }
+                        else { lst_main.SelectionMode = SelectionMode.One;
+                            lbl_selectiontype.Text = "Select Single Value.";
+                        }
                     }
                 }
             }
