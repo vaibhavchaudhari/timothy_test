@@ -34,6 +34,8 @@
             this.btn_prev = new System.Windows.Forms.Button();
             this.btn_next = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.lbl_selectiontype = new System.Windows.Forms.Label();
+            this.txt_displaytext = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lst_main
@@ -42,9 +44,9 @@
             this.lst_main.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lst_main.FormattingEnabled = true;
             this.lst_main.ItemHeight = 18;
-            this.lst_main.Location = new System.Drawing.Point(139, 12);
+            this.lst_main.Location = new System.Drawing.Point(96, 46);
             this.lst_main.Name = "lst_main";
-            this.lst_main.Size = new System.Drawing.Size(250, 310);
+            this.lst_main.Size = new System.Drawing.Size(308, 220);
             this.lst_main.TabIndex = 0;
             this.lst_main.SelectedIndexChanged += new System.EventHandler(this.lst_main_SelectedIndexChanged);
             // 
@@ -53,7 +55,7 @@
             this.btn_prev.BackColor = System.Drawing.Color.Transparent;
             this.btn_prev.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_prev.BackgroundImage")));
             this.btn_prev.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_prev.Location = new System.Drawing.Point(53, 135);
+            this.btn_prev.Location = new System.Drawing.Point(35, 152);
             this.btn_prev.Name = "btn_prev";
             this.btn_prev.Size = new System.Drawing.Size(42, 41);
             this.btn_prev.TabIndex = 1;
@@ -65,7 +67,7 @@
             this.btn_next.BackColor = System.Drawing.Color.Transparent;
             this.btn_next.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_next.BackgroundImage")));
             this.btn_next.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_next.Location = new System.Drawing.Point(427, 135);
+            this.btn_next.Location = new System.Drawing.Point(424, 152);
             this.btn_next.Name = "btn_next";
             this.btn_next.Size = new System.Drawing.Size(41, 41);
             this.btn_next.TabIndex = 2;
@@ -78,11 +80,34 @@
             this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
+            // lbl_selectiontype
+            // 
+            this.lbl_selectiontype.AutoSize = true;
+            this.lbl_selectiontype.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_selectiontype.ForeColor = System.Drawing.Color.Maroon;
+            this.lbl_selectiontype.Location = new System.Drawing.Point(93, 15);
+            this.lbl_selectiontype.Name = "lbl_selectiontype";
+            this.lbl_selectiontype.Size = new System.Drawing.Size(45, 16);
+            this.lbl_selectiontype.TabIndex = 3;
+            this.lbl_selectiontype.Text = "label1";
+            // 
+            // txt_displaytext
+            // 
+            this.txt_displaytext.BackColor = System.Drawing.Color.Wheat;
+            this.txt_displaytext.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.txt_displaytext.Location = new System.Drawing.Point(96, 297);
+            this.txt_displaytext.Multiline = true;
+            this.txt_displaytext.Name = "txt_displaytext";
+            this.txt_displaytext.Size = new System.Drawing.Size(308, 151);
+            this.txt_displaytext.TabIndex = 4;
+            // 
             // frm_popupwindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(551, 343);
+            this.ClientSize = new System.Drawing.Size(509, 498);
+            this.Controls.Add(this.txt_displaytext);
+            this.Controls.Add(this.lbl_selectiontype);
             this.Controls.Add(this.btn_next);
             this.Controls.Add(this.btn_prev);
             this.Controls.Add(this.lst_main);
@@ -90,6 +115,7 @@
             this.Text = "frm_popupwindow";
             this.Load += new System.EventHandler(this.frm_popupwindow_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -100,5 +126,7 @@
         private System.Windows.Forms.Button btn_prev;
         private System.Windows.Forms.Button btn_next;
         private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.Label lbl_selectiontype;
+        private System.Windows.Forms.TextBox txt_displaytext;
     }
 }
