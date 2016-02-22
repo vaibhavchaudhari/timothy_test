@@ -23,6 +23,15 @@ namespace timothy_test
         List<int> listBox1_selection = new List<int>();
         List<KeyValuePair<int,string>> data = new List<KeyValuePair<int,string>>();
 
+        private void lst_main_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btn_next_Click(sender, e);
+
+            }
+        }
+
         public frm_popupwindow()
         {
             InitializeComponent();
