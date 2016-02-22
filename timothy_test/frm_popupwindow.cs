@@ -23,6 +23,14 @@ namespace timothy_test
         List<int> listBox1_selection = new List<int>();
         List<KeyValuePair<int,string>> data = new List<KeyValuePair<int,string>>();
 
+        private void lst_main_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (lst_main.SelectionMode == SelectionMode.One)
+            {
+                btn_next_Click(sender, e);
+            }
+        }
+
         public frm_popupwindow()
         {
             InitializeComponent();
@@ -70,6 +78,7 @@ namespace timothy_test
                     { bind_list();
                     btn_prev.Visible = false;
                     txt_displaytext.Text = "";
+                    lbl_selectiontype.Text = "";
                 }
                 if (cnt >= 1 && cnt <= maxcnt)
                 {
@@ -99,11 +108,17 @@ namespace timothy_test
                     if (flag == 1)
                     {
                         lst_main.SelectionMode = SelectionMode.MultiSimple;
-                        lbl_selectiontype.Text = "Can Select Multiple Values.";
+                        //lbl_selectiontype.Text = "Can Select Multiple Values.";
+                        string pqr = (list[cnt - 1]) + ":Can Select Multiple Values";
+                        pqr = pqr.Replace('#', ' ');
+                        lbl_selectiontype.Text = pqr;
                     }
                     else {
                         lst_main.SelectionMode = SelectionMode.One;
-                        lbl_selectiontype.Text = "Select Single Value.";
+                        //lbl_selectiontype.Text = "Select Single Value.";
+                        string pqr = (list[cnt - 1]) + ":Select Single Value.";
+                        pqr = pqr.Replace('#', ' ');
+                        lbl_selectiontype.Text = pqr;
                     }
                 }
 
@@ -117,7 +132,8 @@ namespace timothy_test
 
         private void lst_main_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (lst_main.SelectionMode == SelectionMode.MultiSimple)
+            
+                if (lst_main.SelectionMode == SelectionMode.MultiSimple)
             {
                 TrackSelectionChange((System.Windows.Forms.ListBox)sender, listBox1_selection);
                 
@@ -191,7 +207,7 @@ namespace timothy_test
                                     Tags = Tags.Insert((Tags.LastIndexOf(',')), " " + "and" + " ");
                                     Tags = Tags.Remove(Tags.LastIndexOf(','), 1);
                                 }
-                                    string oldchar = list[cnt - 2].ToString();
+                                string oldchar = list[cnt - 2].ToString();
                                 string newchar = Tags;
                                 newmenu.Add(newchar);
                                 descreption = descreption.Replace((oldchar), (newchar));
@@ -223,7 +239,7 @@ namespace timothy_test
                     }
                     if (cnt >= 1 && cnt <= maxcnt)
                     {
-                        
+                       
                         submenuname = "menu" + cnt;
                         dt = bl.getsubmenus(mainmenuid, submenuname);                       
                         if (lst_main.Items.Count > 0)
@@ -239,10 +255,18 @@ namespace timothy_test
                         if (flag == 1)
                         {
                             lst_main.SelectionMode = SelectionMode.MultiSimple;
-                            lbl_selectiontype.Text = "Can Select Multiple Values.";
+                            //lbl_selectiontype.Text = "Can Select Multiple Values.";
+                            string pqr= (list[cnt - 1])+ ":Can Select Multiple Values.";
+                            pqr = pqr.Replace('#',' ');
+                            lbl_selectiontype.Text = pqr;
+
                         }
                         else { lst_main.SelectionMode = SelectionMode.One;
-                            lbl_selectiontype.Text = "Select Single Value.";
+                            //lbl_selectiontype.Text = "Select Single Value.";
+                            string pqr = (list[cnt - 1])+ ":Select Single Value.";
+                            pqr = pqr.Replace('#', ' ');
+                            lbl_selectiontype.Text = pqr;
+
                         }
                     }
                 }
