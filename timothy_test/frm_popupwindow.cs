@@ -49,6 +49,11 @@ namespace timothy_test
             btn_next.Enabled = false;
         }
 
+        private void txt_displaytext_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
         public void bind_list()
         {
             //function for binding the list that is adding the items in listbox            
@@ -65,6 +70,7 @@ namespace timothy_test
                     data.Add(new KeyValuePair<int, string>((int)r["Id"],r["MenuKey"].ToString()));
                 }
                 dt.Clear();
+                lbl_selectiontype.Text = "Please Select any Menu";
             }
             catch (Exception e)
             {
@@ -85,7 +91,7 @@ namespace timothy_test
                     { bind_list();
                     btn_prev.Visible = false;
                     txt_displaytext.Text = "";
-                    lbl_selectiontype.Text = "";
+                    lbl_selectiontype.Text ="Please Select any Menu";
                 }
                 if (cnt >= 1 && cnt <= maxcnt)
                 {
@@ -137,6 +143,24 @@ namespace timothy_test
 
         private void lst_main_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if(cnt==0)
+            {
+                try
+                {  for (int i = 0; i < data.Count; i++)
+                        {
+                            if (data[i].Value == lst_main.SelectedItem.ToString())
+                            {
+                                mainmenuid = data[i].Key;
+                                maxcnt = bl.getsubmenucount(data[i].Key);
+                                break;
+                            }
+                        }
+                    
+                       descreption = bl.getdescreption(mainmenuid);
+                    txt_displaytext.Text = descreption;
+                }
+                catch(Exception ex) { MessageBox.Show(ex.Message.ToString()); }
+            }
             if (btn_next.Enabled == false) { btn_next.Enabled = true; }
             if (lst_main.SelectionMode == SelectionMode.MultiSimple)
             {

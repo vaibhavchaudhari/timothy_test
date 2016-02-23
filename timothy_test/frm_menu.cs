@@ -15,12 +15,51 @@ namespace timothy_test
         public partial class frm_menu : Form
     {
         globalKeyboardHook gkh = new globalKeyboardHook();
-        List<string> abc = new List<string>();      
+        List<string> abc = new List<string>();
+        bool minimizedToTray;
+        NotifyIcon notifyIcon;
         public frm_menu()
         {
             InitializeComponent();
             lbl_comment.Text = "          Press :ff" + Environment.NewLine + "on text editor to activate" + Environment.NewLine + "Smart Suggestion Window.";
             
+        }
+        protected override void WndProc(ref Message message)
+        {
+            if (message.Msg == SingleInstance.WM_SHOWFIRSTINSTANCE)
+            {
+                ShowWindow();
+            }
+            base.WndProc(ref message);
+        }
+        void MinimizeToTray()
+        {
+            notifyIcon = new NotifyIcon();
+            //notifyIcon.Click += new EventHandler(NotifyIconClick);
+            notifyIcon.DoubleClick += new EventHandler(NotifyIconClick);
+            notifyIcon.Icon = this.Icon;
+            notifyIcon.Text = ProgramInfo.AssemblyTitle;
+            notifyIcon.Visible = true;
+            this.WindowState = FormWindowState.Minimized;
+            this.Hide();
+            minimizedToTray = true;
+        }
+        public void ShowWindow()
+        {
+            if (minimizedToTray)
+            {
+                notifyIcon.Visible = false;
+                this.Show();
+                this.WindowState = FormWindowState.Normal;
+                minimizedToTray = false;
+            }
+            else {
+                WinApi.ShowToFront(this.Handle);
+            }
+        }
+        void NotifyIconClick(Object sender, System.EventArgs e)
+        {
+            ShowWindow();
         }
 
         private void adminToolStripMenuItem_Click(object sender, EventArgs e)
@@ -31,8 +70,8 @@ namespace timothy_test
         [STAThread]
         private void frm_menu_Load(object sender, EventArgs e)
         {
-            WindowState = FormWindowState.Minimized;
-            ShowInTaskbar = false;
+           // WindowState = FormWindowState.Minimized;
+           // ShowInTaskbar = false;
             gkh.HookedKeys.Add(Keys.Oem1);
             gkh.HookedKeys.Add(Keys.F);
             gkh.KeyDown += new KeyEventHandler(gkh_KeyDown);
@@ -62,15 +101,14 @@ namespace timothy_test
 
         private void frm_menu_Resize(object sender, EventArgs e)
         {
-            if (FormWindowState.Minimized == WindowState)
-                Hide();
+            if (this.WindowState == FormWindowState.Minimized)
+
+            {
+                MinimizeToTray();
+            }
         }
 
-        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            Show();
-            WindowState = FormWindowState.Normal;
-        }
+      
 
         private void runOnStaretupToolStripMenuItem_Click(object sender, EventArgs e)
         {

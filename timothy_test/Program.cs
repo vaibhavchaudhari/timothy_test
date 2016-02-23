@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
+using System.Runtime.InteropServices;
+using System.Reflection;
 
 namespace timothy_test
 {
@@ -15,32 +14,26 @@ namespace timothy_test
         [STAThread]
         static void Main()
         {
-            Mutex mutex = new System.Threading.Mutex(false, "MyUniqueMutexName");
+            if (!SingleInstance.Start())
+            {
+                SingleInstance.ShowFirstInstance();
+                return;
+            }
+
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+
             try
             {
-                if (mutex.WaitOne(0, false))
-                {
-                    // Run the application
-                    Application.EnableVisualStyles();
-                    Application.SetCompatibleTextRenderingDefault(false);
-                    Application.Run(new frm_menu());
-                }
-                else
-                {
-                    return;
-                }
+                frm_menu mainForm = new frm_menu();
+                Application.Run(mainForm);
             }
-            finally
+            catch (Exception e)
             {
-                if (mutex != null)
-                {
-                    mutex.Close();
-                    mutex = null;
-                }
+                MessageBox.Show(e.Message);
             }
-            
-           
+
+            SingleInstance.Stop();
         }
-        
     }
 }

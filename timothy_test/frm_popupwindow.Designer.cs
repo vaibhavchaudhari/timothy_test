@@ -34,6 +34,7 @@
             this.btn_next = new System.Windows.Forms.Button();
             this.lbl_selectiontype = new System.Windows.Forms.Label();
             this.txt_displaytext = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lst_main
@@ -94,13 +95,26 @@
             this.txt_displaytext.Name = "txt_displaytext";
             this.txt_displaytext.Size = new System.Drawing.Size(308, 151);
             this.txt_displaytext.TabIndex = 4;
+            this.txt_displaytext.TextChanged += new System.EventHandler(this.txt_displaytext_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(39)))), ((int)(((byte)(0)))));
+            this.label1.Location = new System.Drawing.Point(98, 279);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(91, 16);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Description:";
             // 
             // frm_popupwindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(223)))), ((int)(((byte)(223)))));
+            this.BackColor = System.Drawing.Color.Wheat;
             this.ClientSize = new System.Drawing.Size(509, 498);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.txt_displaytext);
             this.Controls.Add(this.lbl_selectiontype);
             this.Controls.Add(this.btn_next);
@@ -123,5 +137,6 @@
         private System.Windows.Forms.Button btn_next;
         private System.Windows.Forms.Label lbl_selectiontype;
         private System.Windows.Forms.TextBox txt_displaytext;
+        private System.Windows.Forms.Label label1;
     }
 }
