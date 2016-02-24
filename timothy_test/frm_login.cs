@@ -35,7 +35,12 @@ namespace timothy_test
                 result=(bl.validateuser(txtuid.Text,txtpass.Text));
                     if(result!=null)
                 {
-
+                    HealthCareMaster hcm = new HealthCareMaster();
+                    hcm.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Userid and Password you entered don't match", "Health Care Application.");
                 }
             }
         }
