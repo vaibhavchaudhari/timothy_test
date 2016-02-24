@@ -87,7 +87,9 @@
             // 
             // runOnStaretupToolStripMenuItem
             // 
+            this.runOnStaretupToolStripMenuItem.Checked = true;
             this.runOnStaretupToolStripMenuItem.CheckOnClick = true;
+            this.runOnStaretupToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.runOnStaretupToolStripMenuItem.Name = "runOnStaretupToolStripMenuItem";
             this.runOnStaretupToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.runOnStaretupToolStripMenuItem.Text = "Run On Start Up";
@@ -99,6 +101,7 @@
             this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
             this.notifyIcon1.Text = "Health Care";
             this.notifyIcon1.Visible = true;
+            this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
             // 
             // contextMenuStrip1
             // 
@@ -128,7 +131,7 @@
             this.lbl_comment.AutoSize = true;
             this.lbl_comment.BackColor = System.Drawing.Color.Transparent;
             this.lbl_comment.Font = new System.Drawing.Font("Segoe Print", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_comment.Location = new System.Drawing.Point(275, 84);
+            this.lbl_comment.Location = new System.Drawing.Point(270, 82);
             this.lbl_comment.Name = "lbl_comment";
             this.lbl_comment.Size = new System.Drawing.Size(0, 23);
             this.lbl_comment.TabIndex = 2;

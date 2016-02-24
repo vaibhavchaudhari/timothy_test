@@ -35,6 +35,8 @@
             this.lbl_selectiontype = new System.Windows.Forms.Label();
             this.txt_displaytext = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btn_done = new System.Windows.Forms.Button();
+            this.lbl_final_done = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lst_main
@@ -88,6 +90,7 @@
             // txt_displaytext
             // 
             this.txt_displaytext.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(223)))));
+            this.txt_displaytext.Enabled = false;
             this.txt_displaytext.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_displaytext.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.txt_displaytext.Location = new System.Drawing.Point(96, 297);
@@ -108,12 +111,35 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "Description:";
             // 
+            // btn_done
+            // 
+            this.btn_done.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btn_done.Location = new System.Drawing.Point(2, 469);
+            this.btn_done.Name = "btn_done";
+            this.btn_done.Size = new System.Drawing.Size(57, 24);
+            this.btn_done.TabIndex = 6;
+            this.btn_done.Text = "Done";
+            this.btn_done.UseVisualStyleBackColor = true;
+            this.btn_done.Visible = false;
+            this.btn_done.Click += new System.EventHandler(this.btn_done_Click);
+            // 
+            // lbl_final_done
+            // 
+            this.lbl_final_done.AutoSize = true;
+            this.lbl_final_done.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            this.lbl_final_done.Location = new System.Drawing.Point(63, 473);
+            this.lbl_final_done.Name = "lbl_final_done";
+            this.lbl_final_done.Size = new System.Drawing.Size(0, 16);
+            this.lbl_final_done.TabIndex = 7;
+            // 
             // frm_popupwindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Wheat;
             this.ClientSize = new System.Drawing.Size(509, 498);
+            this.Controls.Add(this.lbl_final_done);
+            this.Controls.Add(this.btn_done);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txt_displaytext);
             this.Controls.Add(this.lbl_selectiontype);
@@ -138,5 +164,7 @@
         private System.Windows.Forms.Label lbl_selectiontype;
         private System.Windows.Forms.TextBox txt_displaytext;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btn_done;
+        private System.Windows.Forms.Label lbl_final_done;
     }
 }

@@ -1,18 +1,11 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace timothy_test
-{            
-        public partial class frm_menu : Form
+{
+    public partial class frm_menu : Form
     {
         globalKeyboardHook gkh = new globalKeyboardHook();
         List<string> abc = new List<string>();
@@ -21,8 +14,8 @@ namespace timothy_test
         public frm_menu()
         {
             InitializeComponent();
-            lbl_comment.Text = "          Press :ff" + Environment.NewLine + "on text editor to activate" + Environment.NewLine + "Smart Suggestion Window.";
-            
+            lbl_comment.Text = "Press :ff on any text editor" + Environment.NewLine + "    window to activate" + Environment.NewLine + "     Smart Suggestion.";
+            RegisterInStartup(true);
         }
         protected override void WndProc(ref Message message)
         {
@@ -35,14 +28,16 @@ namespace timothy_test
         void MinimizeToTray()
         {
             notifyIcon = new NotifyIcon();
-            //notifyIcon.Click += new EventHandler(NotifyIconClick);
-            notifyIcon.DoubleClick += new EventHandler(NotifyIconClick);
-            notifyIcon.Icon = this.Icon;
-            notifyIcon.Text = ProgramInfo.AssemblyTitle;
-            notifyIcon.Visible = true;
-            this.WindowState = FormWindowState.Minimized;
-            this.Hide();
-            minimizedToTray = true;
+            if (FormWindowState.Minimized == this.WindowState)
+            {
+                notifyIcon.Visible = true;
+                this.Hide();
+            }
+
+            else if (FormWindowState.Normal == this.WindowState)
+            {
+                notifyIcon.Visible = false;
+            }
         }
         public void ShowWindow()
         {
@@ -92,13 +87,32 @@ namespace timothy_test
             {
                 if (abc[0].Equals("Oem1") && abc[1].Equals("F") && abc[2].Equals("F"))
                 {
-                    frm_popupwindow popup = new frm_popupwindow();
-                    popup.Show();
+                   
+                    if (System.Windows.Forms.Application.OpenForms["frm_popupwindow"] as frm_popupwindow != null)
+                    {
+                        System.Windows.Forms.Application.OpenForms["frm_popupwindow"].Activate();
+                        //frm_popupwindow.ActiveForm.Resume();
+                        // MessageBox.Show("Smart Suggestion is already open.","Health Care Application.");
+                        if(System.Windows.Forms.Application.OpenForms["frm_popupwindow"].WindowState==FormWindowState.Minimized)
+                        {
+                            System.Windows.Forms.Application.OpenForms["frm_popupwindow"].WindowState = FormWindowState.Normal;
+                        }
+                    }
+                    else
+                    {
+                        // MessageBox.Show("Form1 is not opened");
+
+                        frm_popupwindow popup = new frm_popupwindow();
+                        //popup.WindowState = FormWindowState.Minimized;
+                        popup.Show();
+                        popup.Activate();
+                       // popup.WindowState = FormWindowState.Normal;
+                       
+                    }
                     abc.Clear();
                 }
+                }
             }
-        }
-
         private void frm_menu_Resize(object sender, EventArgs e)
         {
             if (this.WindowState == FormWindowState.Minimized)
@@ -141,6 +155,11 @@ namespace timothy_test
         private void Exit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            ShowWindow();
         }
     }
 }

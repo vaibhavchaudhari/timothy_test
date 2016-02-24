@@ -1,14 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlServerCe;
-using System.Web.UI.WebControls;
 
 namespace timothy_test
 {
@@ -44,6 +38,7 @@ namespace timothy_test
 
         private void frm_popupwindow_Load(object sender, EventArgs e)
         {
+         
             bind_list();
             btn_prev.Visible = false;
             btn_next.Enabled = false;
@@ -52,6 +47,15 @@ namespace timothy_test
         private void txt_displaytext_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btn_done_Click(object sender, EventArgs e)
+        {
+            descreption = txt_displaytext.Text;
+            Clipboard.SetDataObject(descreption, false, 5, 100);
+            SendKeys.SendWait("^V");
+            this.Close();
+           
         }
 
         public void bind_list()
@@ -74,13 +78,17 @@ namespace timothy_test
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message.ToString());
+                MessageBox.Show(e.Message.ToString(), "Health Care Application.");
             }
         }
 
         private void btn_prev_Click(object sender, EventArgs e)
         {
-
+            if (lbl_final_done.Text != string.Empty)
+            {
+                lbl_final_done.Text = string.Empty;
+            }
+            if (btn_done.Visible == true) { btn_done.Visible = false; }
             try
             {
                 if (cnt >= 0)
@@ -136,38 +144,48 @@ namespace timothy_test
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message.ToString());
+                MessageBox.Show(ex.Message.ToString(), "Health Care Application.");
             }
         }
+        public void getmenuid()
+        {
+            try
+            {
+                for (int i = 0; i < data.Count; i++)
+                {
+                    if (data[i].Value == lst_main.SelectedItem.ToString())
+                    {
+                        mainmenuid = data[i].Key;
+                        maxcnt = bl.getsubmenucount(data[i].Key);
+                        break;
+                    }
+                }
 
+                descreption = bl.getdescreption(mainmenuid);
+                txt_displaytext.Text = descreption;
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message.ToString(), "Health Care Application."); }
+
+        }
 
         private void lst_main_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cnt==0)
+            if (lst_main.SelectedIndex >-1)
             {
-                try
-                {  for (int i = 0; i < data.Count; i++)
-                        {
-                            if (data[i].Value == lst_main.SelectedItem.ToString())
-                            {
-                                mainmenuid = data[i].Key;
-                                maxcnt = bl.getsubmenucount(data[i].Key);
-                                break;
-                            }
-                        }
-                    
-                       descreption = bl.getdescreption(mainmenuid);
-                    txt_displaytext.Text = descreption;
+                if (cnt == 0)
+                {
+                    getmenuid();
                 }
-                catch(Exception ex) { MessageBox.Show(ex.Message.ToString()); }
+                if (btn_next.Enabled == false)
+                {
+                    btn_next.Enabled = true;
+                }
+                if (lst_main.SelectionMode == SelectionMode.MultiSimple)
+                {
+                    TrackSelectionChange((System.Windows.Forms.ListBox)sender, listBox1_selection);
+                }
+
             }
-            if (btn_next.Enabled == false) { btn_next.Enabled = true; }
-            if (lst_main.SelectionMode == SelectionMode.MultiSimple)
-            {
-                TrackSelectionChange((System.Windows.Forms.ListBox)sender, listBox1_selection);
-                
-            }
-           
         }
         private void TrackSelectionChange(System.Windows.Forms.ListBox lb, List<int> selection)
         {
@@ -193,15 +211,7 @@ namespace timothy_test
                     if (cnt == 1)
                     {
                         btn_prev.Visible = true;
-                        for (int i = 0; i < data.Count; i++)
-                        {
-                            if (data[i].Value == lst_main.SelectedItem.ToString())
-                            {
-                                mainmenuid = data[i].Key;
-                                maxcnt = bl.getsubmenucount(data[i].Key);
-                                break;
-                            }
-                        }
+                        getmenuid();
                         descreption = bl.getdescreption(mainmenuid);
                         txt_displaytext.Text = descreption;
                         var pattern = @"(\#(?:.*?)\#)";
@@ -257,13 +267,16 @@ namespace timothy_test
                         }
                         if(cnt==maxcnt+1)
                         {
-                            Clipboard.SetDataObject(descreption, false, 5, 100);
-                            SendKeys.SendWait("^V");
+                           
                             btn_next.Visible = false;
                             lst_main.Items.Clear();
                             lbl_selectiontype.Text = "";
-                            
-                            
+                            btn_done.Visible = true;
+                            txt_displaytext.Enabled = true;
+                            lbl_final_done.Text = "Your description is now copied and you can paste it anywhere.";
+                            btn_done.Focus();
+
+
                         }
                     }
                     if (cnt >= 1 && cnt <= maxcnt)
@@ -296,10 +309,12 @@ namespace timothy_test
                         }
                     }
                 }
+                if(txt_displaytext.SelectionLength>0)
+                { txt_displaytext.SelectionLength = 0; }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message.ToString());
+                MessageBox.Show(ex.Message.ToString(),"Health Care Application.");
             }
         }
     }

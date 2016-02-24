@@ -76,5 +76,9 @@ namespace timothy_test
         {
             return( dl.getdescreption(Key));
         }
+     public string validateuser(string uid, string pass)
+        {
+            return(dl.validateuser(uid, pass));
+        }
     }
 }

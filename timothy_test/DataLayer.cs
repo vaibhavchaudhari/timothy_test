@@ -472,8 +472,27 @@ namespace timothy_test
                 }
                 throw (e);
             }
+        }
+        public string validateuser(string uid, string pass)
 
-
+        {
+            try
+            {
+                con.Open();
+                cmd = new SqlCeCommand("SELECT count(*) from Users where UserId='" + uid + "' and Password='" + pass + "'", con);
+                result = cmd.ExecuteScalar().ToString();
+                cmd.Dispose();
+                con.Close();
+                return (result);
+            }
+            catch (Exception e)
+            {
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+                throw (e);
+            }
         }
     }
 }
